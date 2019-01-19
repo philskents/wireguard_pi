@@ -1,0 +1,31 @@
+- name: Install kernel headers
+  apt:
+    name: raspberrypi-kernel-headers
+  become: yes
+
+- name: Add repo key
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: 8B48AD6246925553
+  become: yes
+
+- name: Add unstable Debian repo
+  apt_repository:
+    repo: 'deb http://deb.debian.org/debian/ unstable main'
+    state: present
+  become: yes
+
+- name: Install dirmngr
+  apt:
+    name: dirmngr
+  become: yes
+
+- name: Pin unstable repo
+  script: ../files/set_priority.sh
+  become: yes
+
+- name: Install wireguard package
+  apt:
+    name: wireguard
+    update_cache: yes
+  become: yes

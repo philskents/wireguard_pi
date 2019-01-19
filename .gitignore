@@ -1,0 +1,5 @@
+.vscode/
+roles/wireguard_pi/profiles/
+site.retry
+Pipfile.lock
+.DS_store

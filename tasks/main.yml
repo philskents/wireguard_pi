@@ -1,0 +1,17 @@
+---
+
+- name: Install wireguard and other prequisites on the server
+  include: 'install_wireguard.yml'
+  tags: install_wireguard
+
+- name: Setup firewall and NAT entries
+  include: 'nat_and_firewall.yml'
+  tags: nat_and_firewall
+
+- name: Setup Wireguard cliets and keys
+  include: 'generate_keys.yml'
+  tags: generate_keys
+
+- name: Download configs to local machine
+  include: 'download_configs.yml'
+  tags: 'download_configs'
